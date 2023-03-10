@@ -1,17 +1,16 @@
-#include <stdio.h>
+#ifndef MEMORY_BLOCK_H_
+#define MEMORY_BLOCK_H_
 
 typedef struct{
     char** memory; 
-    size_t size;
-    size_t capacity; 
-} dataBlock; 
+    int size;
+    int capacity; 
+} dataBlock;
 
-dataBlock* initializeNewBlock(size_t);
-
+dataBlock* initializeNewBlock(int);
 void countLinesAndWords(dataBlock*, char*);
-
 char* getBlock(dataBlock*, int);
-
 void deleteBlock(dataBlock*, int);
-
 void deleteDataBlock(dataBlock*);
+
+#endif

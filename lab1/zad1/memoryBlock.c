@@ -4,7 +4,7 @@
 #include <errno.h>
 #include "memoryBlock.h"
 
-dataBlock* initializeNewBlock(size_t numberOfElements){
+dataBlock* initializeNewBlock(int numberOfElements){
     dataBlock * newMemoryBlock = calloc(1, sizeof(dataBlock));
     newMemoryBlock->memory = calloc( numberOfElements, sizeof(char*));
 
@@ -28,7 +28,7 @@ void countLinesAndWords(dataBlock* data, char* filename){
     int indexToWrite = -1;
 
     for(int i = 0; i < data->capacity; ++i)
-        if(data->memory[i] == 0){
+        if(data->memory[i] == NULL){
             indexToWrite = i; 
             break;
         }
@@ -38,7 +38,7 @@ void countLinesAndWords(dataBlock* data, char* filename){
         exit(EXIT_FAILURE);
     }
     
-    FILE *fp = fopen(filename, "r");
+    FILE *fp = fopen(resultFileName, "r");
 
     if (fp == NULL){
         fprintf(stderr, "Cannot open file!\n");
@@ -92,12 +92,4 @@ void deleteDataBlock(dataBlock* data){
     for(int i = 0; i < data->capacity; i++)
         deleteBlock(data, i);
     free(data);
-}
-
-
-int main(){
-    dataBlock* data = initializeNewBlock(10);
-    countLinesAndWords(data, "test.txt");
-    deleteDataBlock(data);
-    return 0;
 }

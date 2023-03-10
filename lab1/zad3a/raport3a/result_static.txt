@@ -1,0 +1,85 @@
+COMMAND: init
+Real:   2933.000000 ns
+User:   0 ticks
+System: 0 ticks
+
+COMMAND: count
+Real:   1362619.000000 ns
+User:   0 ticks
+System: 0 ticks
+
+COMMAND: count
+Real:   1261627.000000 ns
+User:   0 ticks
+System: 0 ticks
+
+COMMAND: count
+Real:   1202820.000000 ns
+User:   0 ticks
+System: 0 ticks
+
+COMMAND: count
+Real:   1044628.000000 ns
+User:   0 ticks
+System: 0 ticks
+
+COMMAND: count
+Real:   1274199.000000 ns
+User:   0 ticks
+System: 0 ticks
+
+COMMAND: show
+OUTPUT:  15  28 321 memoryBlock.h
+Real:   1397.000000 ns
+User:   0 ticks
+System: 0 ticks
+
+COMMAND: show
+OUTPUT:  128  276 3123 zadanie2.c
+Real:   1467.000000 ns
+User:   0 ticks
+System: 0 ticks
+
+COMMAND: show
+OUTPUT:   95  229 2386 memoryBlock.c
+Real:   1467.000000 ns
+User:   0 ticks
+System: 0 ticks
+
+COMMAND: show
+OUTPUT:  0  3 11 test.txt
+Real:   1397.000000 ns
+User:   0 ticks
+System: 0 ticks
+
+COMMAND: show
+OUTPUT:   58  190 1367 makefile
+Real:   1467.000000 ns
+User:   0 ticks
+System: 0 ticks
+
+COMMAND: delete
+Real:   1396.000000 ns
+User:   0 ticks
+System: 0 ticks
+
+COMMAND: delete
+Real:   1397.000000 ns
+User:   0 ticks
+System: 0 ticks
+
+COMMAND: delete
+Real:   1467.000000 ns
+User:   0 ticks
+System: 0 ticks
+
+COMMAND: delete
+Real:   978.000000 ns
+User:   0 ticks
+System: 0 ticks
+
+COMMAND: delete
+Real:   978.000000 ns
+User:   0 ticks
+System: 0 ticks
+

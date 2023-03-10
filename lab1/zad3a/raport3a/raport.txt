@@ -1,0 +1,5 @@
+
+Program najszybciej działał używając biblioteki statycznej.
+Biblioteka współdzielona była wolniejsza od statycznej a szybsza od dynamicznej
+
+

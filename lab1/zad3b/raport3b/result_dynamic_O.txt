@@ -1,0 +1,100 @@
+
+Real:   1603.000000 ns
+User:   0 ticks
+System: 0 ticks
+
+
+
+Real:   1815809.000000 ns
+User:   0 ticks
+System: 0 ticks
+
+
+
+Real:   1681548.000000 ns
+User:   0 ticks
+System: 0 ticks
+
+
+
+Real:   1729999.000000 ns
+User:   0 ticks
+System: 0 ticks
+
+
+
+Real:   1539602.000000 ns
+User:   0 ticks
+System: 0 ticks
+
+
+
+Real:   1748994.000000 ns
+User:   0 ticks
+System: 0 ticks
+
+
+ 15  28 321 memoryBlock.h
+
+Real:   450.000000 ns
+User:   0 ticks
+System: 0 ticks
+
+
+ 130  280 3169 zadanie2.c
+
+Real:   702.000000 ns
+User:   0 ticks
+System: 0 ticks
+
+
+  95  229 2386 memoryBlock.c
+
+Real:   221.000000 ns
+User:   0 ticks
+System: 0 ticks
+
+
+
+Real:   351.000000 ns
+User:   0 ticks
+System: 0 ticks
+
+
+ 179  515 3854 makefile
+
+Real:   501.000000 ns
+User:   0 ticks
+System: 0 ticks
+
+
+
+Real:   2545.000000 ns
+User:   0 ticks
+System: 0 ticks
+
+
+
+Real:   200.000000 ns
+User:   0 ticks
+System: 0 ticks
+
+
+
+Real:   181.000000 ns
+User:   0 ticks
+System: 0 ticks
+
+
+
+Real:   180.000000 ns
+User:   0 ticks
+System: 0 ticks
+
+
+
+Real:   180.000000 ns
+User:   0 ticks
+System: 0 ticks
+
+
