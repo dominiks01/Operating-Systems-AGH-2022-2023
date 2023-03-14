@@ -13,6 +13,8 @@ struct tms cpu_end;
 struct timespec clock_start; 
 struct timespec clock_end;
 
+const int BLOCK_SIZE = 1024;
+
 void start_clock(void){
     clock_gettime(CLOCK_REALTIME, &clock_start);
     times(&cpu_start);
@@ -28,7 +30,7 @@ void end_clock(void){
     FILE* pomiar = fopen("pomiar_zad_2.txt","a+b");
 
     char result [100];
-    snprintf(result,100, "\nReading char by char\nReal:   %lf ns\nUser:   %jd ticks\nSystem: %jd ticks\n\n",
+    snprintf(result,100, "\nReading block by block\nReal:   %lf ns\nUser:   %jd ticks\nSystem: %jd ticks\n\n",
         (double)(clock_end.tv_nsec - clock_start.tv_nsec),
         (__intmax_t)cpu_time1,
         (__intmax_t)cpu_time2);
@@ -41,21 +43,38 @@ void reverse(char* inputFileName, char* outputFileName){
     FILE* inputFile = fopen(inputFileName, "r");
     FILE* outputFile = fopen(outputFileName, "a+b");
 
-    char c; 
-    fseek(inputFile, -1, SEEK_END);
+    char buffer[BLOCK_SIZE];
+    int offsetSize; 
 
-    while ((ftell(inputFile)) != 0){
-        fread(&c, sizeof(char), 1, inputFile);
-        fwrite(&c, sizeof c, 1, outputFile);
-        fseek(inputFile, -2, SEEK_CUR);
+    fseek(inputFile, 0, SEEK_END);
+    offsetSize = ftell(inputFile)%BLOCK_SIZE;
+    char offset[offsetSize];
+
+    fseek(inputFile, 0, SEEK_SET);
+    fseek(inputFile, -BLOCK_SIZE, SEEK_END);
+
+    while ((ftell(inputFile)) > 0){
+
+        fread(&buffer, sizeof(buffer), 1, inputFile);
+
+        for(int i = BLOCK_SIZE - 1; i > 0; i--)
+            fwrite(&buffer[i], 1, 1, outputFile);
+        
+        if(ftell(inputFile) - 2*BLOCK_SIZE < 0)
+            break;
+
+        fseek(inputFile, -2*BLOCK_SIZE, SEEK_CUR);
     }
 
-    fread(&c, sizeof c, 1, inputFile);
-    fwrite(&c, sizeof c, 1, outputFile);
+    fseek(inputFile, offsetSize, SEEK_SET);
+    fread(&offset, 1, offsetSize, inputFile);
+
+    for(int i = offsetSize - 1; i >= 0; i--)
+            fwrite(&offset[i], 1, 1, outputFile);
 
     fclose(inputFile);
     fclose(outputFile);
-}
+};
 
 
 int main(int argc, char *argv[]){
@@ -68,6 +87,4 @@ int main(int argc, char *argv[]){
     start_clock();
     reverse(argv[1],argv[2]);
     end_clock();
-
-    return 0;
 }
