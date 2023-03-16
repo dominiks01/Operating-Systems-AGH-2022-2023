@@ -69,6 +69,7 @@ void replaceCharacters(char* search, char* replace, char* inputFileName, char* o
         }
     }
 
+
     end_clock();
     close(openFile);
     close(outputFile);
