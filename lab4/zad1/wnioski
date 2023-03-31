@@ -1,0 +1,7 @@
+- Sygnał ignore jest ignorowany dla obu funkcji 
+- Mask działa dla obu 
+- Pending:
+    * oczekujący sygnał widoczny w rodzicu
+    * oczekujacy sygnał niewidoczny w dziecku
+    
+- Handler działa dla forka 

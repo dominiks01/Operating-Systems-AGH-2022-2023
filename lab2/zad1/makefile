@@ -1,6 +1,6 @@
 CC = gcc -Wall 
 
-all: test
+all: systems_functions_compile library_functions_compile
 
 systems_functions_compile: 
 	$(CC) zamien.c -o system_function.exe 

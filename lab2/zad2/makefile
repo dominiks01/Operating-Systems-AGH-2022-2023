@@ -1,6 +1,6 @@
 CC = gcc -Wall 
 
-all: test
+all: byte_read_variant block_read_variant
 
 byte_read_variant: 
 	$(CC) reverse.c -o byte_reverse.exe 
@@ -15,7 +15,9 @@ test:
 	./byte_reverse.exe alaMaKota.txt tmp.txt >> pomiar_zad_2.txt
 	
 	make block_read_variant
-	./block_reverse.exe  alaMaKota.txt tmp.txt >> pomiar_zad_2.txt
+	./block_reverse.exe  alaMaKota.txt tmp2.txt >> pomiar_zad_2.txt
+
+	diff -s tmp.txt tmp2.txt >> pomiar_zad_2.txt
 	
 clean:
 	rm -f *.o 2> /dev/null
