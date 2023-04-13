@@ -11,8 +11,6 @@
 #include <sys/time.h>
 #include <dlfcn.h>
 
-#define BUFFSIZE 1024
-
 double function_value(double x){
     return 4./(x*x + 1);
 }
@@ -37,19 +35,17 @@ double calculate(double a, double b, double block_width){
 }
 
 double split_calculation(int number_of_children, double block_width){
-
     double *range = calloc(number_of_children+1, sizeof(double));
     range = split_array(range, number_of_children, block_width);
 
-    char read_buffer[BUFFSIZE] = "";
-    char write_buffer[BUFFSIZE] = "";
-
     double result = 0;
+    int fd[number_of_children][2];
+    id_t pid;
+    double out;
 
     for(int i = 0; i < number_of_children; i++){
-        int fd[2];
-        pipe(fd);
-        id_t pid = fork();
+        pipe(fd[i]);
+        pid = fork();
 
         if(pid == -1){
             perror("fork");
@@ -57,18 +53,16 @@ double split_calculation(int number_of_children, double block_width){
         }
 
         if(pid == 0){
-            close(fd[0]);
-            double out = calculate(range[i], range[i+1], block_width);
-            size_t size = snprintf(write_buffer,BUFFSIZE, "%f", out);
-            write(fd[1],write_buffer, size);
+            close(fd[i][0]);
+            out = calculate(range[i], range[i+1], block_width);
+            write(fd[i][1],&out, sizeof(double));
             exit(0);
         } else {
-            close(fd[1]);
-            read(fd[0], read_buffer, BUFFSIZE);
-            result += strtod(read_buffer, NULL);
+            wait(NULL);
+            close(fd[i][1]);
+            read(fd[i][0], &out, sizeof(double));
+            result += out;
         }
-
-        while (wait(NULL) > 0);
     }
 
     printf("RESULT %lf \n", result);
@@ -83,10 +77,12 @@ int main(int argc, char ** argv){
         exit(EXIT_FAILURE);
     }
 
-    clock_t tic = clock();
+    struct timespec start, end;
+    clock_gettime(CLOCK_REALTIME, &start);
     split_calculation(atoi(argv[2]), strtod(argv[1], NULL));
-    clock_t toc = clock();
-    printf("Elapsed: %f seconds\n", (double)(toc - tic) / CLOCKS_PER_SEC);
+    clock_gettime(CLOCK_REALTIME, &end);
+    double real_time = (end.tv_sec - start.tv_sec) + (end.tv_nsec - start.tv_nsec) * 0.000000001;
+    printf("EXECUTION TIME: %f s\n", real_time);
     
     return  0;
 }
