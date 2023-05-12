@@ -58,6 +58,7 @@ double split_calculation(int number_of_children, double block_width){
     }
 
     while(wait(NULL) > 0);
+
     int file = read(fifo, read_buffer, BUFFSIZE);
 
     if(file == -1){
