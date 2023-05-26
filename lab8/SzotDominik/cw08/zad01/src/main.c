@@ -22,7 +22,7 @@ int main()
 	while (true)
 	{
 		draw_grid(foreground);
-		usleep(500 * 1000);
+		usleep(100 * 1000);
 
 		// Step simulation
 		game_of_life(foreground, background);

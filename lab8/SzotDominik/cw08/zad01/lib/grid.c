@@ -130,8 +130,7 @@ void game_of_life(char *src, char *dst)
     action.sa_sigaction = ignore_handler;
     sigaction(SIGUSR1, &action, NULL);
 
-    if (!threads)
-    {
+    if (!threads){
         threads = malloc(sizeof(pthread_t) * grid_height * grid_width);
 
         
@@ -151,7 +150,5 @@ void game_of_life(char *src, char *dst)
         }
     }
     for (int i = 0; i < grid_height * grid_width; i++)
-    {
         pthread_kill(threads[i], SIGUSR1);
-    }
 }
