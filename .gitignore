@@ -1,6 +1,5 @@
 .vscode 
-*.o 
-*.txt 
+*.o  
 *.exe 
 *.a
 *.out
