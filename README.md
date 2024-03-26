@@ -3,7 +3,7 @@ Programs for AGH course - Operating Systems 2022/23
 
 | Release | Description
 | ------------- | ------------- |
-| [lab1](lab1/)| [lab1_solution](https://github.com/dominiks01/Operating-Systems-AGH-2022-2023/tree/main/lab1) | Zarządzanie pamięcią, biblioteki, pomiar czasu | 
+| [lab1_solution](https://github.com/dominiks01/Operating-Systems-AGH-2022-2023/tree/main/lab1) | Zarządzanie pamięcią, biblioteki, pomiar czasu | 
 | [lab2_solution](https://github.com/dominiks01/Operating-Systems-AGH-2022-2023/tree/main/lab2) | System plików, operacje na plikach| 
 | [lab3_solution](https://github.com/dominiks01/Operating-Systems-AGH-2022-2023/tree/main/lab3) | Tworzenie procesów. Środowisko procesu, sterowanie procesami.| 
 | [lab4_solution](https://github.com/dominiks01/Operating-Systems-AGH-2022-2023/tree/main/lab4) | Sygnały | 
